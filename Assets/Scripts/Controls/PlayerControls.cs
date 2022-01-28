@@ -6,6 +6,7 @@ using Utility;
 namespace Controls {
 	public class PlayerControls : MonoBehaviour {
 		[SerializeField] private PlayerController player;
+		[SerializeField] private PlayerController mirroredPlayer;
 		
 		private Direction direction = Direction.None;
 		
@@ -15,9 +16,10 @@ namespace Controls {
 		}
 
 		private void Update() {
-			if (direction == Direction.None || player.Moving) return;
+			if (direction == Direction.None || player.Moving || mirroredPlayer.Moving) return;
 			
 			player.Move(direction);
+			mirroredPlayer.Move(direction.Opposite());
 		}
 	}
 }

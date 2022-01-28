@@ -12,10 +12,19 @@ namespace Player {
 
 		public void Move(Direction direction) {
 			if (moving) return;
+			
+			var target = transform.position + direction.ToVector3();
+
+			if (!CanWalkTo(target)) return;
 
 			moving = true;
-			var target = transform.position + direction.ToVector3();
 			StartCoroutine(ProcessMovement(target));
+		}
+
+		private bool CanWalkTo(Vector3 target) {
+			var coll = Physics2D.OverlapPoint(target);
+
+			return coll == null || coll.isTrigger;
 		}
 
 		private IEnumerator ProcessMovement(Vector3 target) {

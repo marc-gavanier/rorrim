@@ -6,9 +6,17 @@ namespace Utility {
 	}
 
 	public static class DirectionExtension {
+		private static Direction[] opposites = {
+			Direction.None, Direction.Down, Direction.Up, Direction.Right, Direction.Left
+		};
+		
 		private static Vector3[] vectors = {
 			Vector3.zero, Vector3.up, Vector3.down, Vector3.left, Vector3.right
 		};
+
+		public static Direction Opposite(this Direction direction) {
+			return opposites[(int)direction];
+		}
 
 		public static Direction ToDirection(this Vector2 vector) {
 			if (vector.x < -0.001f) return Direction.Left;
