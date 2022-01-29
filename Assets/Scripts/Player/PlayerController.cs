@@ -3,9 +3,11 @@ using UnityEngine;
 using Utility;
 
 namespace Player {
+	[RequireComponent(typeof(PlayerAnimator))]
 	public class PlayerController : MonoBehaviour {
 		[SerializeField] private float walkingSpeed = 4f;
-		
+
+		private PlayerAnimator animator;
 		private bool moving;
 
 		public bool Moving => moving;
@@ -18,7 +20,12 @@ namespace Player {
 			if (!CanWalkTo(target)) return;
 
 			moving = true;
+			animator.SetDirection(direction);
 			StartCoroutine(ProcessMovement(target));
+		}
+
+		private void Awake() {
+			animator = GetComponent<PlayerAnimator>();
 		}
 
 		private bool CanWalkTo(Vector3 target) {
@@ -28,6 +35,8 @@ namespace Player {
 		}
 
 		private IEnumerator ProcessMovement(Vector3 target) {
+			animator.SetMoving(true);
+			
 			while (Vector3.Distance(transform.position, target) > 0.001f) {
 				var distance = Time.deltaTime * walkingSpeed;
 				transform.position = Vector3.MoveTowards(transform.position, target, distance);
@@ -37,6 +46,12 @@ namespace Player {
 
 			transform.position = target;
 			moving = false;
+
+			yield return new WaitForEndOfFrame();
+
+			if (!moving) {
+				animator.SetMoving(false);
+			}
 		}
 	}
 }

@@ -372,6 +372,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c54f1063d9b81749a10ceda312b3a80, type: 3}
+--- !u!114 &992332889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 963028224529629390, guid: 1c54f1063d9b81749a10ceda312b3a80, type: 3}
+  m_PrefabInstance: {fileID: 970659997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638d3e506fe84284a34a8d6a3bc36ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1389959596
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,7 +411,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -494,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5564711634096268447, guid: 7bda74548c286a04eb8e9121fc42930b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5564711634096268447, guid: 7bda74548c286a04eb8e9121fc42930b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -612,5 +623,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7b114d3c2437e4db4cf537b8e02196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  mirroredPlayer: {fileID: 0}
+  player: {fileID: 992332889}
+  mirroredPlayer: {fileID: 2075587038}
+--- !u!114 &2075587038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5886371766683915841, guid: 7bda74548c286a04eb8e9121fc42930b, type: 3}
+  m_PrefabInstance: {fileID: 1682786124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638d3e506fe84284a34a8d6a3bc36ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
