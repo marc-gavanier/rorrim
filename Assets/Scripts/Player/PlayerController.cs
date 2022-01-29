@@ -15,7 +15,7 @@ namespace Player {
 
 		public void Move(Direction direction) {
 			if (moving) return;
-			
+
 			animator.SetDirection(direction);
 			GameObject movable;
 
@@ -33,17 +33,29 @@ namespace Player {
 			movable = null;
 			var directionVector = direction.ToVector3();
 			var target = transform.position + directionVector;
-			var coll = Physics2D.OverlapPoint(target);
+			var colliders = Physics2D.OverlapPointAll(target);
 
-			if (coll == null || coll.isTrigger) return true;
+			foreach (var coll in colliders) {
+				if (coll.isTrigger) continue;
 
-			if ((movableLayers.value & (1 << coll.gameObject.layer)) == 0) return false;
+				if ((movableLayers.value & (1 << coll.gameObject.layer)) == 0) return false;
 
-			movable = coll.gameObject;
-			var collTarget = target + directionVector;
-			var otherColl = Physics2D.OverlapPoint(collTarget);
+				movable = coll.gameObject;
+				var collTarget = target + directionVector;
+				var otherColl = Physics2D.OverlapPoint(collTarget);
 
-			return otherColl == null || otherColl.isTrigger;
+				return otherColl == null || otherColl.isTrigger;
+			}
+
+			return true;
+		}
+
+		private void EmitStand(Vector3 position, GameObject emitter) {
+			var coll = Physics2D.OverlapPoint(position);
+
+			if (coll != null) {
+				coll.SendMessage("OnStand", emitter, SendMessageOptions.DontRequireReceiver);
+			}
 		}
 
 		private IEnumerator ProcessMovement(Direction direction, GameObject movable) {
@@ -57,18 +69,21 @@ namespace Player {
 				transform.position = Vector3.MoveTowards(transform.position, target, distance);
 
 				if (movable != null) {
-					movable.transform.position = Vector3.MoveTowards(movable.transform.position, movableTarget, distance);
+					movable.transform.position =
+						Vector3.MoveTowards(movable.transform.position, movableTarget, distance);
 				}
 
 				yield return new WaitForEndOfFrame();
 			}
 
 			transform.position = target;
+			EmitStand(target, gameObject);
 
 			if (movable != null) {
 				movable.transform.position = movableTarget;
+				EmitStand(movableTarget, movable);
 			}
-			
+
 			moving = false;
 
 			yield return new WaitForEndOfFrame();
