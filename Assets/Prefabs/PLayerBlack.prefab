@@ -120,6 +120,9 @@ MonoBehaviour:
   movableLayers:
     serializedVersion: 2
     m_Bits: 64
+  standableLayers:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &2507121913168175170
 MonoBehaviour:
   m_ObjectHideFlags: 0

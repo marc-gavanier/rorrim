@@ -7,6 +7,7 @@ namespace Player {
 	public class PlayerController : MonoBehaviour {
 		[SerializeField] private float walkingSpeed = 4f;
 		[SerializeField] private LayerMask movableLayers;
+		[SerializeField] private LayerMask standableLayers;
 
 		private PlayerAnimator animator;
 		private bool moving;
@@ -51,7 +52,7 @@ namespace Player {
 		}
 
 		private void EmitStand(Vector3 position, GameObject emitter) {
-			var coll = Physics2D.OverlapPoint(position);
+			var coll = Physics2D.OverlapPoint(position, standableLayers);
 
 			if (coll != null) {
 				coll.SendMessage("OnStand", emitter, SendMessageOptions.DontRequireReceiver);
