@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Data;
 using UnityEngine;
 using Utility;
 
@@ -10,11 +11,13 @@ namespace Player {
 		[SerializeField] private LayerMask movableLayers;
 		[SerializeField] private LayerMask standableLayers;
 		[SerializeField] private LayerMask interactableLayers;
+		[SerializeField] private Inventory inventory;
 
 		private PlayerAnimator animator;
 		private Direction direction;
 		private bool moving;
 
+		public Inventory Inventory => inventory;
 		public bool Moving => moving;
 
 		public void Move(Direction moveDirection) {
@@ -35,7 +38,7 @@ namespace Player {
 			var coll = Physics2D.OverlapPoint(target, interactableLayers);
 
 			if (coll != null) {
-				coll.SendMessage("OnInteract", gameObject);
+				coll.SendMessage("OnInteract", this);
 			}
 		}
 

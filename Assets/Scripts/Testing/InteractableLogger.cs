@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 
 namespace Testing {
 	public class InteractableLogger : MonoBehaviour {
-		private void OnInteract(GameObject interactor) {
-			Debug.Log($"Interact with {interactor.name}");
+		private void OnInteract(PlayerController character) {
+			Debug.Log($"Interact with {character.name}");
 		}
 	}
 }
