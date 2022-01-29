@@ -6,6 +6,7 @@ namespace Player {
 	[RequireComponent(typeof(PlayerAnimator))]
 	public class PlayerController : MonoBehaviour {
 		[SerializeField] private float walkingSpeed = 4f;
+		[SerializeField] private Transform destinationCollider;
 		[SerializeField] private LayerMask movableLayers;
 		[SerializeField] private LayerMask standableLayers;
 		[SerializeField] private LayerMask interactableLayers;
@@ -73,25 +74,37 @@ namespace Player {
 			}
 		}
 
-		private IEnumerator ProcessMovement(Direction direction, GameObject movable) {
+		private IEnumerator ProcessMovement(Direction moveDirection, GameObject movable) {
 			animator.SetMoving(true);
-			var directionVector = direction.ToVector3();
+			var directionVector = moveDirection.ToVector3();
 			var target = transform.position + directionVector;
 			var movableTarget = target + directionVector;
+			var remainingDistance = 1f;
+			destinationCollider.position = target;
 
-			while (Vector3.Distance(transform.position, target) > 0.001f) {
-				var distance = Time.deltaTime * walkingSpeed;
-				transform.position = Vector3.MoveTowards(transform.position, target, distance);
+			yield return null;
+			yield return null;
 
-				if (movable != null) {
-					movable.transform.position =
-						Vector3.MoveTowards(movable.transform.position, movableTarget, distance);
-				}
-
-				yield return new WaitForEndOfFrame();
+			if (movable != null) {
+				movable.SendMessage("OnMovementStart", directionVector);
 			}
 
-			transform.position = target;
+			while (Vector3.Distance(transform.position, target) > 0.001f) {
+				var distance = Mathf.Min(Time.deltaTime * walkingSpeed, remainingDistance);
+				remainingDistance -= distance;
+				var movement = directionVector * distance;
+				transform.position += movement;
+				destinationCollider.position = target;
+
+				if (movable != null) {
+					movable.transform.position += movement;
+					movable.SendMessage("OnMove", movement);
+				}
+
+				yield return null;
+			}
+
+			transform.position = destinationCollider.position = target;
 			EmitStand(target, gameObject);
 
 			if (movable != null) {
