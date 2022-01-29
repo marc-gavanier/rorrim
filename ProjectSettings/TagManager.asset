@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 4032597
+    locked: 0
+  - name: Obstacles
+    uniqueID: 4007651319
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Above
+    uniqueID: 1663109109
     locked: 0
