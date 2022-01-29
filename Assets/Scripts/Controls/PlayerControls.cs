@@ -9,6 +9,11 @@ namespace Controls {
 		[SerializeField] private PlayerController mirroredPlayer;
 		
 		private Direction direction = Direction.None;
+
+		private void OnInteract() {
+			player.Interact();
+			mirroredPlayer.Interact();
+		}
 		
 		public void OnMove(InputValue value) {
 			var input = value.Get<Vector2>();

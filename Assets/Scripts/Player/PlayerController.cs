@@ -8,15 +8,18 @@ namespace Player {
 		[SerializeField] private float walkingSpeed = 4f;
 		[SerializeField] private LayerMask movableLayers;
 		[SerializeField] private LayerMask standableLayers;
+		[SerializeField] private LayerMask interactableLayers;
 
 		private PlayerAnimator animator;
+		private Direction direction;
 		private bool moving;
 
 		public bool Moving => moving;
 
-		public void Move(Direction direction) {
+		public void Move(Direction moveDirection) {
 			if (moving) return;
 
+			direction = moveDirection;
 			animator.SetDirection(direction);
 			GameObject movable;
 
@@ -26,8 +29,19 @@ namespace Player {
 			StartCoroutine(ProcessMovement(direction, movable));
 		}
 
+		public void Interact() {
+			var target = transform.position + direction.ToVector3();
+			var coll = Physics2D.OverlapPoint(target, interactableLayers);
+
+			if (coll != null) {
+				coll.SendMessage("OnInteract", gameObject);
+			}
+		}
+
 		private void Awake() {
 			animator = GetComponent<PlayerAnimator>();
+			direction = Direction.Down;
+			animator.SetDirection(direction);
 		}
 
 		private bool CanWalkTo(Direction direction, out GameObject movable) {
