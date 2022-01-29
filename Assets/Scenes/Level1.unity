@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 97969568}
   - component: {fileID: 97969567}
   - component: {fileID: 97969566}
+  - component: {fileID: 97969569}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -199,6 +200,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &97969569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97969565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711c7efe14727052382cd87ca20f9d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteCamera: {fileID: 1006979242}
+  blackCamera: {fileID: 538655916}
 --- !u!1 &116038993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7319,7 +7334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5564711634096268447, guid: 7bda74548c286a04eb8e9121fc42930b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 5564711634096268447, guid: 7bda74548c286a04eb8e9121fc42930b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18126,7 +18141,7 @@ Camera:
     serializedVersion: 2
     x: 0.5
     y: 0
-    width: 1
+    width: 0.5
     height: 1
   near clip plane: 0.3
   far clip plane: 1000

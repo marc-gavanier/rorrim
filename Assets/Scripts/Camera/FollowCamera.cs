@@ -1,14 +1,14 @@
 using UnityEngine;
 
-
 namespace Camera
 {
 	[RequireComponent(typeof(UnityEngine.Camera))]
 	public class FollowCamera : MonoBehaviour {
 		[SerializeField] private Transform target;
-		[SerializeField] private bool reverseOffset;
+		[SerializeField] public bool reverseOffset;
 		[SerializeField] private UnityEngine.Camera mainCamera;
-		private new UnityEngine.Camera camera;
+		private UnityEngine.Camera camera;
+		public UnityEngine.Camera Camera => camera;
 
 
 		// Start is called before the first frame update
@@ -21,6 +21,14 @@ namespace Camera
 			Vector3 worldDimensions = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 10));
 			Vector2 position = target.position;
 			camera.transform.SetPositionAndRotation(new Vector3(position.x - (worldDimensions.x / 2f) * (reverseOffset ? -1f : 1f), position.y, camera.transform.position.z), target.rotation);
+		}
+
+		public void ReverseOffset() {
+			reverseOffset = true;
+		}
+
+		public void NoReverseOffset() {
+			reverseOffset = false;
 		}
 	}
 }
