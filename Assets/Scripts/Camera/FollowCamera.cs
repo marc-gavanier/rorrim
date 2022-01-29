@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
+
 
 namespace Camera
 {
@@ -8,6 +7,7 @@ namespace Camera
 	public class FollowCamera : MonoBehaviour {
 		[SerializeField] private Transform target;
 		[SerializeField] private bool reverseOffset;
+		[SerializeField] private UnityEngine.Camera mainCamera;
 		private new UnityEngine.Camera camera;
 
 
@@ -18,12 +18,9 @@ namespace Camera
 
 		// Update is called once per frame
 		void Update() {
-			// camera.size * camera.ratio
-			Debug.Log("Screen Width : " + Screen.width);
-			Debug.unityLogger.Log(camera.pixelWidth);
-			Debug.unityLogger.Log(camera.orthographicSize);
+			Vector3 worldDimensions = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 10));
 			Vector2 position = target.position;
-			camera.transform.SetPositionAndRotation(new Vector3(position.x - (Screen.width / 251.38f) * (reverseOffset ? -1f : 1f), position.y, camera.transform.position.z), target.rotation);
+			camera.transform.SetPositionAndRotation(new Vector3(position.x - (worldDimensions.x / 2f) * (reverseOffset ? -1f : 1f), position.y, camera.transform.position.z), target.rotation);
 		}
 	}
 }
