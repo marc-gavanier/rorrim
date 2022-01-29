@@ -19,9 +19,9 @@ public class CameraControls : MonoBehaviour {
 	}
 
 	void SwitchCamera(FollowCamera leftCamera, FollowCamera rightCamera) {
-		leftCamera.Camera.rect = new Rect(0, 0, .5f, 1);
+		leftCamera.HostCamera.rect = new Rect(0, 0, .5f, 1);
 		leftCamera.NoReverseOffset();
-		rightCamera.Camera.rect = new Rect(.5f, 0, .5f, 1);
+		rightCamera.HostCamera.rect = new Rect(.5f, 0, .5f, 1);
 		rightCamera.ReverseOffset();
 	}
 }
