@@ -640,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 238694033}
   - component: {fileID: 238694035}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PillarBlack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20189,7 +20189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 976182996}
   - component: {fileID: 976182997}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PillarBlack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20750,7 +20750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1147228192}
   - component: {fileID: 1147228194}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PillarBlack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29262,7 +29262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1758135757}
   - component: {fileID: 1758135758}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PillarBlack4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41592,7 +41592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184a68714f374fc3bfc70fb5f9a0452d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: {fileID: 102900000, guid: 23e30ed4cab3e684e86696a4062903da, type: 3}
+  nextLevel: Start
 --- !u!1 &1952075225
 GameObject:
   m_ObjectHideFlags: 0
