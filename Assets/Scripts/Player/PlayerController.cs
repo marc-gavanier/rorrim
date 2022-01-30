@@ -6,6 +6,7 @@ using Utility;
 namespace Player {
 	[RequireComponent(typeof(PlayerAnimator))]
 	public class PlayerController : MonoBehaviour {
+		[SerializeField] private PlayerColor color;
 		[SerializeField] private float walkingSpeed = 4f;
 		[SerializeField] private Transform destinationCollider;
 		[SerializeField] private LayerMask movableLayers;
@@ -17,6 +18,7 @@ namespace Player {
 		private Direction direction;
 		private bool moving;
 
+		public PlayerColor Color => color;
 		public Inventory Inventory => inventory;
 		public bool Moving => moving;
 

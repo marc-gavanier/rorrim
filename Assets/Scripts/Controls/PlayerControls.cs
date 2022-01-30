@@ -22,9 +22,14 @@ namespace Controls {
 
 		private void Update() {
 			if (direction == Direction.None || player.Moving || mirroredPlayer.Moving) return;
-			
-			player.Move(direction);
-			mirroredPlayer.Move(direction.Opposite());
+
+			if (player.gameObject.activeSelf) {
+				player.Move(direction);
+			}
+
+			if (mirroredPlayer.gameObject.activeSelf) {
+				mirroredPlayer.Move(direction.Opposite());
+			}
 		}
 	}
 }
