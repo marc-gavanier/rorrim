@@ -38,7 +38,7 @@ namespace Player {
 			var coll = Physics2D.OverlapPoint(target, interactableLayers);
 
 			if (coll != null) {
-				coll.SendMessage("OnInteract", this);
+				coll.SendMessage("OnInteract", this, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace Player {
 			yield return null;
 
 			if (movable != null) {
-				movable.SendMessage("OnMovementStart", directionVector);
+				movable.SendMessage("OnMovementStart", directionVector, SendMessageOptions.DontRequireReceiver);
 			}
 
 			while (Vector3.Distance(transform.position, target) > 0.001f) {
@@ -101,7 +101,7 @@ namespace Player {
 
 				if (movable != null) {
 					movable.transform.position += movement;
-					movable.SendMessage("OnMove", movement);
+					movable.SendMessage("OnMove", movement, SendMessageOptions.DontRequireReceiver);
 				}
 
 				yield return null;
