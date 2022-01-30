@@ -20,7 +20,7 @@ Video game produced in 48 hours for Global Game Jam 2022, feel free to review ou
   - [Installation](#installation)
 - [Contributing](#contributing)
 - [Credits](#credits)
-  - [Jamers](#jamers)
+  - [Jammers](#jammers)
   - [Musics](#musics)
   - [Graphics](#graphics)
 - [License](#license)
@@ -105,7 +105,7 @@ git clone git@github.com:marc-gavanier/rorrim.git
 
 ## Credits
 
-### Jamers
+### Jammers
 
 - [Marc Gavanier - Programmer](https://www.linkedin.com/in/marc-gavanier/)
 - Nicolas Treiber - Programmer
