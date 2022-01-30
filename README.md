@@ -2,6 +2,8 @@
 
 Video game produced in 48 hours for Global Game Jam 2022, feel free to review our [submission](https://globalgamejam.org/2022/games/rorrim-5)
 
+![Rorrim Title](./Assets/Graphics/Textures/UI/RorrimTitle.png)
+
 ## Table of Contents
 
 - [How to play](#how-to-play)
@@ -120,4 +122,4 @@ git clone git@github.com:marc-gavanier/rorrim.git
 
 ## License
 
-Released under the terms of the `MIT` license. See [LICENSE](/LICENSE) for the full details.
+Released under the terms of the `MIT` license. See [LICENSE](./LICENSE) for the full details.
