@@ -5,7 +5,7 @@ public class CameraControls : MonoBehaviour {
 	[SerializeField] private FollowCamera whiteCamera;
 	[SerializeField] private FollowCamera blackCamera;
 
-	private bool whiteCameraIsLeft = true;
+	private bool whiteCameraIsLeft = false;
 
 	void OnSwitchCamera() {
 		whiteCameraIsLeft = !whiteCameraIsLeft;
