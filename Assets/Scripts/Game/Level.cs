@@ -7,7 +7,7 @@ using Utility;
 
 namespace Game {
 	public class Level : MonoBehaviour {
-		[SerializeField] private SceneAsset nextLevel;
+		[SerializeField] private string nextLevel;
 		
 		private bool blackOut;
 		private bool whiteOut;
@@ -23,7 +23,7 @@ namespace Game {
 			character.gameObject.SetActive(false);
 
 			if (blackOut && whiteOut) {
-				SceneManager.LoadScene(nextLevel.name);
+				SceneManager.LoadScene(nextLevel);
 			}
 		}
 	}
